@@ -7,12 +7,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app" class="app-container">
+        <header class="top-header">
+            <div class="header-left">
+                <button id="menu-toggle" class="menu-btn" aria-label="Open Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <div class="greeting-container">
+                    <h1 id="user-greeting">Good morning, Champ</h1>
+                    <p class="greeting-subtext">Let's make today a saving day</p>
+                </div>
+            </div>
 
+            <div class="header-right">
+                <button class="icon-btn" aria-label="Notifications">🔔</button>
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/40" alt="User Profile" id="profile-img">
+                </div>
+            </div>
+        </header>
     </div>
     <script src="script.js"></script>
 </body>
