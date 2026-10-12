@@ -28,3 +28,5 @@ document.querySelectorAll('.placeholder-link').forEach(link => {
     alert('This section is coming soon!');
   });
 });
+
+lucide.createIcons();
