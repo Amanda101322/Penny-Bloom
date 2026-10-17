@@ -59,6 +59,16 @@
             </button>
         </section>
 
+        <div class="currency-selector">
+            <label for="currency-select">Display currency</label>
+            <select id="currency-select">
+                <option value="NGN">Nigerian Naira(NGN ₦)</option>
+                <option value="USD">US Dollar (USD $)</option>
+                <option value="GBP">British Pound (GBP £)</option>
+                <option value="EUR">Euro (EUR €)</option>
+            </select>
+        </div>
+
         <section class="savings-overview" aria-label="savings-overview">
             <article class="summary-card total-savings-card">
                 <div class="summary-card-top">
@@ -75,19 +85,19 @@
                 <div class="summary-card-top">
                     <span class="summary-label">Saved This Month</span>
                     <span class="summary-icon">
-                        <i data lucide="trending-up"></i>
+                        <i data-lucide="trending-up"></i>
                     </span>
                 </div>
 
-                <p id="monthly-savings" class="summary-amount">0.00</p>
+                <p id="monthly-savings" class="summary-amount">₦0.00</p>
                 <p class="summary-description">Your progress this month</p>
                 </article>
 
                 <article class="summary-card">
                     <div class="summary-card-top">
                         <span class="summary-label">Active Goals</span>
-                        <span class="summary-icon"
-                        <i data-lucie="target"></i>
+                        <span class="summary-icon">
+                        <i data-lucide="target"></i>
                     </span>
                     </div>
                     <p id="active-goals" class="summary-amount">0</p>
@@ -112,7 +122,7 @@
                 <article class="goal-card">
                     <div class="goal-card-top">
                         <span class="goal-icon laptop-icon">
-                            <i data-lucid="laptop"></i>
+                            <i data-lucide="laptop"></i>
                         </span>
                         <span class="goal-status">In progress</span>
                     </div>
@@ -121,7 +131,7 @@
 
                     <div class="goal-amounts">
                         <span class="goal-saved">₦120,000</span>
-                        <span clasas="goal-target">of ₦500,000</span>
+                        <span class="goal-target">of ₦500,000</span>
                     </div>
                     <div class="progress-track" role="progress-bar" aria-label="New Laptop savings progress" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-fill laptop-progress"></div>
@@ -162,7 +172,7 @@
 
                 <button id="view-transactions-btn" class="text-btn">
                     View all
-                    <i data lucide="arrow-right"></i>
+                    <i data-lucide="arrow-right"></i>
                 </button>
             </div>
             <div class="transactions-card">
@@ -259,7 +269,6 @@
                 <span>Settings</span>
             </a>
         </nav>
-    </div>
 
     <!-- Sidebar Footer -->
         <div class="sidebar-footer">
@@ -271,7 +280,8 @@
     </aside>
     
     <!-- Overlay -->
-    <div id="overlay" class="overlay"></div>
+    <div id="overlay" class="overlay">
+    </div>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
