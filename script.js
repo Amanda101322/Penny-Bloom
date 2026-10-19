@@ -50,21 +50,25 @@ function formatCurrency(amount, currency) {
   return new Intl.NumberFormat('en', {
     style: 'currency',
     currency: currency,
-    minimumFractionnDigits: 2,
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2
   }).format(amount);
 }
 const totalSavings = document.getElementById('total-savings');
+
+let totalSavingsAmount = 0;
+
 function updateTotalSavings() {
-if(!totalSavings || !currencySelect) return;
-const amount = 0;
-totalSavings.textContent = formatCurrency(
-  amount,
-  currencySelect.value
-);
+    if (!totalSavings || !currencySelect) return;
+
+    totalSavings.textContent = formatCurrency(
+        totalSavingsAmount,
+        currencySelect.value
+    );
 }
 
 if (currencySelect) {
   currencySelect.addEventListener('change', updateTotalSavings);
 }
+
 updateTotalSavings();
