@@ -15,13 +15,10 @@ const closeSidebar = () => {
   sidebar.classList.remove('active');
   overlay.classList.remove('active');
 };
-
-// Event Listeners for Sidebar Menu
 menuToggle.addEventListener('click', openSidebar);
 closeMenuBtn.addEventListener('click', closeSidebar);
 overlay.addEventListener('click', closeSidebar);
 
-// Some placeholder links are not yet functional so this is to prevent default behavior and show an alert instead
 document.querySelectorAll('.placeholder-link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -30,3 +27,44 @@ document.querySelectorAll('.placeholder-link').forEach(link => {
 });
 
 lucide.createIcons();
+
+const currencySelect = document.getElementById('currency-select');
+const savedCurrency = localStorage.getItem('pennyBloomCurrency');
+
+if (savedCurrency && currencySelect) {
+    currencySelect.value = savedCurrency;
+}
+if (currencySelect) {
+    currencySelect.addEventListener('change', () => {
+        localStorage.setItem('pennyBloomCurrency', currencySelect.value);
+    });
+}
+
+const currencySymbols = {
+  NGN: '₦',
+  USD: '$',
+  GBP: '£',
+  EUR: '€'
+};
+function formatCurrency(amount, currency) {
+  return new Intl.NumberFormat('en', {
+    style: 'currency',
+    currency: currency,
+    minimumFractionnDigits: 2,
+    maximumFractionDigits: 2
+  }).format(amount);
+}
+const totalSavings = document.getElementById('total-savings');
+function updateTotalSavings() {
+if(!totalSavings || !currencySelect) return;
+const amount = 0;
+totalSavings.textContent = formatCurrency(
+  amount,
+  currencySelect.value
+);
+}
+
+if (currencySelect) {
+  currencySelect.addEventListener('change', updateTotalSavings);
+}
+updateTotalSavings();
