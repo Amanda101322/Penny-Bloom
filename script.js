@@ -56,6 +56,10 @@ function formatCurrency(amount, currency) {
 }
 const totalSavings = document.getElementById('total-savings');
 const monthlySavings = document.getElementById('monthly-savings');
+
+const transactions = JSON.parse(
+  localStorage.getItem('pennyBloomTransactions')
+) || [];
 let monthlySavingsAmount = 0;
 function updateMonthlySavings() {
   if (!monthlySavings || !currencySelect) return;
@@ -169,26 +173,18 @@ savingsForm.addEventListener('submit', (event) => {
 
   const amount = Number(savingsAmountInput.value);
   const note = savingsNoteInput.value.trim();
+  transactions.push({
+    note: note,
+    amount: amount,
+    date: new Date().toISOString()
+  });
 
-  const transaction = document.createElement('article');
-  transaction.classList.add('transaction-item');
+  localStorage.setItem(
+    'pennyBloomTransactions',
+    JSON.stringify(transactions)
+  );
 
-  transaction.innerHTML = `
-  <div class="transaction-icon deposit-icon">
-  <i data-lucide="arrow-down-left"></i>
-  </div>
-  
-  <div class="transaction-details">
-  <h3>${note}</h3>
-  <p> Savings deposit . Today</p>
-  </div>
-  
-  <div class="transaction-amount deposit-amount">
-  +${formatCurrency(amount, currencySelect.value)}
-  </div>
-  `;
-  transactionsList.prepend(transaction);
-  lucide.createIcons();
+  displayTransaction(note, amount);
 
   totalSavingsAmount += amount;
   monthlySavingsAmount += amount;
@@ -200,3 +196,30 @@ savingsForm.addEventListener('submit', (event) => {
   savingsForm.reset();
 });
 const transactionsList = document.getElementById('transactions-list');
+
+
+function displayTransaction(note, amount) {
+  const transaction = document.createElement('article');
+  transaction.classList.add('transaction-item');
+
+  transaction.innerHTML = `
+    <div class="transaction-icon deposit-icon">
+      <i data-lucide="arrow-down-left"></i>
+    </div>
+
+    <div class="transaction-details">
+      <h3>${note}</h3>
+      <p>Savings deposit · Today</p>
+    </div>
+
+    <div class="transaction-amount deposit-amount">
+      +${formatCurrency(amount, currencySelect.value)}
+    </div>
+  `;
+
+  transactionsList.prepend(transaction);
+  lucide.createIcons();
+}
+transactions.forEach(transaction => {
+  displayTransaction(transaction.note, transaction.amount);
+});
