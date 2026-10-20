@@ -161,3 +161,42 @@ cancelSavingsBtn.addEventListener('click', (event) => {
   event.preventDefault();
   savingsModal.classList.remove('active');
 });
+const savingsForm = document.getElementById('savings-form');
+const savingsAmountInput = document.getElementById('savings-amount');
+const savingsNoteInput = document.getElementById('savings-note');
+savingsForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const amount = Number(savingsAmountInput.value);
+  const note = savingsNoteInput.value.trim();
+
+  const transaction = document.createElement('article');
+  transaction.classList.add('transaction-item');
+
+  transaction.innerHTML = `
+  <div class="transaction-icon deposit-icon">
+  <i data-lucide="arrow-down-left"></i>
+  </div>
+  
+  <div class="transaction-details">
+  <h3>${note}</h3>
+  <p> Savings deposit . Today</p>
+  </div>
+  
+  <div class="transaction-amount deposit-amount">
+  +${formatCurrency(amount, currencySelect.value)}
+  </div>
+  `;
+  transactionsList.prepend(transaction);
+  lucide.createIcons();
+
+  totalSavingsAmount += amount;
+  monthlySavingsAmount += amount;
+
+  updateTotalSavings();
+  updateMonthlySavings();
+
+  savingsModal.classList.remove('active');
+  savingsForm.reset();
+});
+const transactionsList = document.getElementById('transactions-list');
