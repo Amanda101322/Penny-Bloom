@@ -149,3 +149,7 @@ options: {
 }
   });
 }
+const addSavingsBtn = document.getElementById('add-savings-btn');
+addSavingsBtn.addEventListener('click', () => {
+  alert('Your savings form is coming soon!');
+});
