@@ -55,7 +55,21 @@ function formatCurrency(amount, currency) {
   }).format(amount);
 }
 const totalSavings = document.getElementById('total-savings');
+const monthlySavings = document.getElementById('monthly-savings');
+let monthlySavingsAmount = 0;
+function updateMonthlySavings() {
+  if (!monthlySavings || !currencySelect) return;
 
+  monthlySavings.textContent = formatCurrency(
+    monthlySavingsAmount,
+    currencySelect.value
+  );
+}
+if (currencySelect) {
+  currencySelect.addEventListener('change', updateMonthlySavings);
+}
+
+updateMonthlySavings();
 let totalSavingsAmount = 0;
 
 function updateTotalSavings() {

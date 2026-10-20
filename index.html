@@ -93,15 +93,22 @@
                 <p class="summary-description">Your progress this month</p>
                 </article>
 
-                <article class="summary-card">
+                <article class="summary-card money-flow-card">
                     <div class="summary-card-top">
-                        <span class="summary-label">Active Goals</span>
+                        <span class="summary-label">Money Flow</span>
                         <span class="summary-icon">
-                        <i data-lucide="target"></i>
-                    </span>
+                            <i data-lucide="chart-no-axes-combined"></i>
+                        </span>
                     </div>
-                    <p id="active-goals" class="summary-amount">0</p>
-                    <p class="summary-description">Dreams you're working towards</p>
+
+                    <div class="money-flow-legend">
+                        <span><i class="legend-dot income-dot"></i> Savings</span>
+                        <span><i class="legend-dot expense-dot"></i> Withdrawals</span>
+                    </div>
+
+                    <div class="money-flow-chart">
+                        <canvas id="money-flow-chart" aria-label="Money saved and withdrawn over time" role="img"></canvas>
+                    </div>
                 </article>
         </section>
         <div class="dashboard-lower-grid">
