@@ -723,3 +723,64 @@ margin-bottom: 8px;
     width: 100%;
     height: 100%;
 }
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(41, 36, 62, 0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.modal.active {
+    display: flex;
+}
+.modal-content {
+    width: 100%;
+    max-width: 440px;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 0;
+    box-shadow: 0 20px 60px rgba(41, 36, 62, 0.18);
+}
+.modal-content h2 {
+    margin: 0 0 8px;
+    color: #29243e;
+}
+.modal-content p {
+    margin: 0 0 24px;
+    color: #777187;
+}
+#savings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#savings-form label {
+    color: #29243e;
+    font-weight: 600;
+}
+#savings-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e4ddec;
+    border-radius: 10px;
+    font: inherit;
+    box-sizing: border-box;
+}
+#savings-form input:focus {
+    outline: 2px solid #a78bfa;
+    border-color: transparent;
+}
+.modal-actions button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font: inherit;
+}
+#cancel-savings-btn {
+    background: #f1edf7;
+    color: #514866;
+}

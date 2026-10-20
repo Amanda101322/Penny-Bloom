@@ -150,6 +150,14 @@ options: {
   });
 }
 const addSavingsBtn = document.getElementById('add-savings-btn');
+const savingsModal = document.getElementById('savings-modal');
+const cancelSavingsBtn = document.getElementById('cancel-savings-btn');
+
 addSavingsBtn.addEventListener('click', () => {
-  alert('Your savings form is coming soon!');
+  savingsModal.classList.add('active');
+});
+
+cancelSavingsBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  savingsModal.classList.remove('active');
 });
